@@ -15,10 +15,6 @@ local remotePath = game:GetService("ReplicatedStorage").PetStoreRoll
 
 
 
-
-
-local library = loadstring(game:HttpGet(('https://github.com/KymicL/First-Script.git')))()
-
 local w = library:CreateWindow("TAPPING SIMULATOR") -- Creates the window
 
 local a = w:CreateFolder("Farming")
