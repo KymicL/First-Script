@@ -49,8 +49,6 @@ function autoRebirth(rebirthAmount)
      end)
 end
 
-autoRebirth(1000)
-
 
 
 function doUpgrades(Upgrades)
@@ -113,7 +111,6 @@ end
 
 
 
-doUpgrades()
 
 
 
@@ -163,61 +160,9 @@ function autoOpen(shopType)
      end)
 end
 
-function getCurrentPlayerPOS()
-     local plyr = game.Players.LocalPlayer
-     if plyr.Character then
-          return plyr.Character.HumannoidRootPart.Position
-     end
-     return false
-end
 
 
 
-
-function teleportTO(placeCFrame)
-     local plyr = game.Players.LocalPlayer
-     if plyr.Character then
-         plyr.Character.HumanoidRootPart.CFrame = placeCFrame
-     end
- end
- function teleportWorld(world)
-     if game:GetService("Workspace").Worlds:FindFirstChild(world)then
-         teleportTO(game:GetService("Workspace").TapShop.Hoop.CFrame)
-     end
-end
-
-teleportWorld('TapShop')
-
-
-
-
-
-
-
-
-
-local currnentPosition = getCurrentPlaterPOS()
-if currnentPosition then
-end
-
-
-
-
-
-game.player.LocalPlayer.Character.Head.NameTag.Frame.Visible = false; -- remove name tag
-
-
-
-for i, v in pairs(getgenv())do
-
-end
-
-function teleportTO(placeCFrame)
-     local plyr = game.Players.LocalPlayer
-     if plyr.Character then
-         plyr.Character.HumanoidRootPart.CFrame = placeCFrame
-     end
- end
 
 
 
