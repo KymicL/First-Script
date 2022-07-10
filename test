@@ -15,102 +15,6 @@ local remotePath = game:GetService("ReplicatedStorage").PetStoreRoll
 
 
 
-local w = library:CreateWindow("TAPPING SIMULATOR") -- Creates the window
-
-local a = w:CreateFolder("Farming")
-
-local b = w:CreateFolder("Pets") -- Creates the folder(U will put here your buttons,etc)
-
-local c = w:CreateFolder("Upgrades")
-
-local d = w:CreateFolder("Teleports")
-
-local e = w:CreateFolder("Misc")
-
-
-
-
-a:Toggle("Auto Click",function(bool)
-    getgenv().autoClick = bool
-    if bool then
-          doTap()
-    end
-end)
-
-
-a:Toggle("Auto Rebirth",function(bool)
-     getgenv().autoRebirth = bool
-     if bool then
-          autoRebirth(1000)
-     end
- end)
-
-
-
- b:Toggle("Standard",function(bool)
-     getgenv().autoOpen = bool
-     if bool then
-          autoOpen(1000)
-     end
- end)
-
-
- c:Toggle("Upgarde",function(bool)
-        getgenv().autoUpgrades =bool
-           local args = {[1] = "Upgrades",[2] = "UpgradeAutoClick"}
-        remotePath:InvokeServer(unpack(args))
-      if bool then
-          doUpgrades()
-      end
-     end)
- c:Button("Upgrades",function()
-     doUpgrades()
-     while wait() do
-     if not getgenv().autoUpgrades then break end
-               local args = {[1] = "Upgrades",[2] = "UpgradeAutoClick"}
-               remotePath:InvokeServer(unpack(args))
-     end
- end)
-
-
-
-
-
- d:Button("Coming Soon",function()
-     print("")
- end)
- 
-
-
- 
-e:DestroyGui()
-
---[[
-How to refresh a dropdown:
-1)Create the dropdown and save it in a variable
-local yourvariable = b:Dropdown("Hi",yourtable,function(a)
-    print(a)
-end)
-2)Refresh it using the function
-yourvariable:Refresh(yourtable)
-How to refresh a label:
-1)Create your label and save it in a variable
-local yourvariable = b:Label("Pretty Useless NGL",{
-    TextSize = 25; -- Self Explaining
-    TextColor = Color3.fromRGB(255,255,255);
-    BgColor = Color3.fromRGB(69,69,69);
-})
-2)Refresh it using the function
-yourvariable:Refresh("Hello") It will only change the text ofc
-]]
-
-
-
-
-
-
-
-
 
 
 
@@ -292,6 +196,105 @@ function teleportTO(placeCFrame)
 end
 
 teleportWorld('TapShop')
+
+
+
+
+
+
+
+
+local w = library:CreateWindow("TAPPING SIMULATOR") -- Creates the window
+
+local a = w:CreateFolder("Farming")
+
+local b = w:CreateFolder("Pets") -- Creates the folder(U will put here your buttons,etc)
+
+local c = w:CreateFolder("Upgrades")
+
+local d = w:CreateFolder("Teleports")
+
+local e = w:CreateFolder("Misc")
+
+
+
+
+a:Toggle("Auto Click",function(bool)
+    getgenv().autoClick = bool
+    if bool then
+          doTap()
+    end
+end)
+
+
+a:Toggle("Auto Rebirth",function(bool)
+     getgenv().autoRebirth = bool
+     if bool then
+          autoRebirth(1000)
+     end
+ end)
+
+
+
+ b:Toggle("Standard",function(bool)
+     getgenv().autoOpen = bool
+     if bool then
+          autoOpen(1000)
+     end
+ end)
+
+
+ c:Toggle("Upgarde",function(bool)
+        getgenv().autoUpgrades =bool
+           local args = {[1] = "Upgrades",[2] = "UpgradeAutoClick"}
+        remotePath:InvokeServer(unpack(args))
+      if bool then
+          doUpgrades()
+      end
+     end)
+ c:Button("Upgrades",function()
+     doUpgrades()
+     while wait() do
+     if not getgenv().autoUpgrades then break end
+               local args = {[1] = "Upgrades",[2] = "UpgradeAutoClick"}
+               remotePath:InvokeServer(unpack(args))
+     end
+ end)
+
+
+
+
+
+ d:Button("Coming Soon",function()
+     print("")
+ end)
+ 
+
+
+ 
+e:DestroyGui()
+
+--[[
+How to refresh a dropdown:
+1)Create the dropdown and save it in a variable
+local yourvariable = b:Dropdown("Hi",yourtable,function(a)
+    print(a)
+end)
+2)Refresh it using the function
+yourvariable:Refresh(yourtable)
+How to refresh a label:
+1)Create your label and save it in a variable
+local yourvariable = b:Label("Pretty Useless NGL",{
+    TextSize = 25; -- Self Explaining
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(69,69,69);
+})
+2)Refresh it using the function
+yourvariable:Refresh("Hello") It will only change the text ofc
+]]
+
+
+
 
 
 
