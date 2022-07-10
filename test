@@ -1,3 +1,4 @@
+
 getgenv().autoClick = false
 getgenv().autoRebirth = false
 getgenv().autoUpgrade = false
@@ -12,13 +13,6 @@ local remotePath = game:GetService("ReplicatedStorage").RepeatableRewards_TimeUn
 local remotePath = game:GetService("ReplicatedStorage").CollectTimedReward
 local remotePath = game:GetService("ReplicatedStorage").PetStoreRoll
 
-
-
-
-
-
-
- 
 
 
 
@@ -169,178 +163,254 @@ function autoOpen(shopType)
      end)
 end
 
+function getCurrentPlayerPOS()
+     local plyr = game.Players.LocalPlayer
+     if plyr.Character then
+          return plyr.Character.HumannoidRootPart.Position
+     end
+     return false
+end
 
-
-local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
-
-local w = library:CreateWindow("TAPPING SIMULATOR") -- Creates the window
-
-local a = w:CreateFolder("Farming")
-
-local b = w:CreateFolder("Pets") -- Creates the folder(U will put here your buttons,etc)
-
-local c = w:CreateFolder("Upgrades")
-
-local d = w:CreateFolder("Teleports")
-
-local e = w:CreateFolder("Misc")
+local currnentPosition = getCurrentPlaterPOS()
+if currnentPosition then
+end
 
 
 
+function teleportTO(placeCFrame)
+     local plyr = game.Players.LocalPlayer
+     if plyr.Character then
+         plyr.Character.HumanoidRootPart.CFrame = placeCFrame
+     end
+ end
+ function teleportWorld(world)
+     if game:GetService("Workspace").Worlds:FindFirstChild(world)then
+         teleportTO(game:GetService("Workspace").TapShop.Hoop.CFrame)
+     end
+end
 
-a:Toggle("Auto Click",function(bool)
-    getgenv().autoClick = bool
-    if bool then
-          doTap()
-    end
-end)
+teleportWorld('TapShop')
 
 
-a:Toggle("Auto Rebirth",function(bool)
-     getgenv().autoRebirth = bool
+
+
+
+
+
+
+
+local currnentPosition = getCurrentPlaterPOS()
+if currnentPosition then
+end
+
+
+
+
+
+game.player.LocalPlayer.Character.Head.NameTag.Frame.Visible = false; -- remove name tag
+
+
+
+for i, v in pairs(getgenv())do
+
+end
+
+function teleportTO(placeCFrame)
+     local plyr = game.Players.LocalPlayer
+     if plyr.Character then
+         plyr.Character.HumanoidRootPart.CFrame = placeCFrame
+     end
+ end
+
+
+
+
+
+
+ _G.ToggleColor = Color3.fromRGB(255,0,0)
+ _G.ButtonColor = Color3.fromRGB(0,255,0)
+ _G.SliderColor = Color3.fromRGB(0,0,255)
+ 
+ local library = loadstring(game:HttpGet(('https://pastebin.com/raw/FsJak6AT')))() -- It's obfuscated, I won't let you see my ugly coding skills. =)
+ 
+ local w = library:CreateWindow("TAPPING SIMULATOR") -- Creates the window
+
+ local a = w:CreateFolder("Farming")
+ 
+ local b = w:CreateFolder("Pets") -- Creates the folder(U will put here your buttons,etc)
+ 
+ local c = w:CreateFolder("Upgrades")
+ 
+ local d = w:CreateFolder("Teleports")
+ 
+ local e = w:CreateFolder("Misc")
+ 
+ 
+ 
+ a:Toggle("Auto Click",function(bool)
+     getgenv().autoClick = bool
      if bool then
-          autoRebirth(1000)
+           doTap()
      end
  end)
-
-
-
- b:Toggle("Standard",function(bool)
-     getgenv().autoOpen = bool
-     if bool then
-          autoOpen(1000)
-     end
- end)
-
-
- c:Toggle("Upgarde",function(bool)
-        getgenv().autoUpgrades =bool
-           local args = {[1] = "Upgrades",[2] = "UpgradeAutoClick"}
-        remotePath:InvokeServer(unpack(args))
+ 
+ 
+ a:Toggle("Auto Rebirth",function(bool)
+      getgenv().autoRebirth = bool
       if bool then
-          doUpgrades()
+           autoRebirth(1000)
       end
-     end)
- c:Button("Upgrades",function()
-     doUpgrades()
-     while wait() do
-     if not getgenv().autoUpgrades then break end
-               local args = {[1] = "Upgrades",[2] = "UpgradeAutoClick"}
-               remotePath:InvokeServer(unpack(args))
-     end
+  end)
+ 
+ 
+ 
+  b:Toggle("Standard",function(bool)
+      getgenv().autoOpen = bool
+      if bool then
+           autoOpen(1000)
+      end
+  end)
+
+  b:Label("Pretty Useless NGL",Color3.fromRGB(38,38,38),Color3.fromRGB(0,216,111)) --BgColor,TextColor
+
+
+  b:Slider("Slider",10,30,true,function(value) --MinValue,MaxValue,Precise
+     print(value)
+ end)
+ 
+ b:Dropdown("Dropdown",{"A","B","C"},true,function(mob) --Replace the Dropdown name with the selected one(A,B,C)
+     print(mob)
+ end)
+ 
+ b:Bind("Bind",Enum.KeyCode.C,function() --Default bind
+     print("Yes")
+ end)
+ 
+ b:ColorPicker("ColorPicker",Color3.fromRGB(255,0,0),function(color)
+     print(color)
+ end)
+ 
+ b:Box("Box","number",function(value) -- "number" or "string"
+     print(value)
  end)
 
-
-
-
-
- d:Button("Coming Soon",function()
-     print("")
- end)
  
-
-
+  c:Toggle("Upgarde",function(bool)
+         getgenv().autoUpgrades =bool
+            local args = {[1] = "Upgrades",[2] = "UpgradeAutoClick"}
+         remotePath:InvokeServer(unpack(args))
+       if bool then
+           doUpgrades()
+       end
+      end)
+  c:Button("Upgrades",function()
+      doUpgrades()
+      while wait() do
+      if not getgenv().autoUpgrades then break end
+                local args = {[1] = "Upgrades",[2] = "UpgradeAutoClick"}
+                remotePath:InvokeServer(unpack(args))
+      end
+  end)
  
-e:DestroyGui()
-
---[[
-How to refresh a dropdown:
-1)Create the dropdown and save it in a variable
-local yourvariable = b:Dropdown("Hi",yourtable,function(a)
-    print(a)
-end)
-2)Refresh it using the function
-yourvariable:Refresh(yourtable)
-How to refresh a label:
-1)Create your label and save it in a variable
-local yourvariable = b:Label("Pretty Useless NGL",{
-    TextSize = 25; -- Self Explaining
-    TextColor = Color3.fromRGB(255,255,255);
-    BgColor = Color3.fromRGB(69,69,69);
-})
-2)Refresh it using the function
-yourvariable:Refresh("Hello") It will only change the text ofc
-]]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--- b:Label("Pretty Useless NGL",{
---      TextSize = 25; -- Self Explaining
---      TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
---      BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
-
---  })
-
-
-
-
-
---  b:Button("Button",function()
---      print("Elym Winning")
---  end)
+ 
+ 
+ 
+ 
+  d:Button("Coming Soon",function()
+      print("")
+  end)
+  
+ 
+ 
+ 
+ 
+ e:DestroyGUI()
+ 
+ e:GuiSettings() -- Use it if you want to let people customize toggles,buttons and sliders color
+ 
+ --Example of refresh
+ 
+ --[[local label = b:Label("Hi",Color3.fromRGB(255,0,0),Color3.fromRGB(0,255,0))
+ 
+ label:Refresh("Not epic")
+ 
+ local dropdown = b:Dropdown("Hi",{"A","B"})
+ 
+ dropdown:Refresh({"A","B","C"})
+ ]]
  
 
 
 
---  b:Button("Button",function()
---      print("Elym Winning")
---  end)
- 
-
-
-     
 
 
 
 
 
--- b:Slider("Slider",{
---     min = 10; -- min value of the slider
---     max = 50; -- max value of the slider
---     precise = true; -- max 2 decimals
--- },function(value)
---     print(value)
--- end)
 
--- b:Dropdown("Dropdown",{"A","B","C"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
---     print(mob)
--- end)
 
--- b:Bind("Bind",Enum.KeyCode.C,function() --Default bind
---     print("Yes")
--- end)
 
--- b:ColorPicker("ColorPicker",Color3.fromRGB(255,0,0),function(color) --Default color
---     print(color)
--- end)
 
--- b:Box("Box","number",function(value) -- "number" or "string"
---     print(value)
--- end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
