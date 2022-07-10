@@ -182,13 +182,13 @@ local win = lib:Window("Tapper Simulator",Color3.fromRGB(44, 120, 224), Enum.Key
 
 local tab = win:Tab("Farming")
 
-local a = win:a("Rebirths")
+local a = win:Tab("Rebirths")
 
-local b = win:b("Upgrades")
+local b = win:Tab("Upgrades")
 
-local c = win:c("Teleports")
+local c = win:Tab("Teleports")
 
-local d = win:d("Misc")
+local d = win:Tab("Misc")
 
 
 
@@ -256,8 +256,6 @@ local changeclr = win:Tab("Change UI Color")
 changeclr:Colorpicker("Change UI Color",Color3.fromRGB(44, 120, 224), function(t)
 lib:ChangePresetColor(Color3.fromRGB(t.R * 255, t.G * 255, t.B * 255))
 end)
-
-
 
 
 
