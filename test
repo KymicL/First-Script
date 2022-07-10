@@ -177,30 +177,6 @@ function getCurrentPlayerPOS()
      return false
 end
 
-local currnentPosition = getCurrentPlaterPOS()
-if currnentPosition then
-end
-
-
-
-function teleportTO(placeCFrame)
-     local plyr = game.Players.LocalPlayer
-     if plyr.Character then
-         plyr.Character.HumanoidRootPart.CFrame = placeCFrame
-     end
- end
- function teleportWorld(world)
-     if game:GetService("Workspace").Worlds:FindFirstChild(world)then
-         teleportTO(game:GetService("Workspace").TapShop.Hoop.CFrame)
-     end
-end
-
-teleportWorld('TapShop')
-
-
-
-
-
 
 
 
