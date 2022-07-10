@@ -156,7 +156,7 @@ end
 function autoOpen(shopType)
      spawn(function()
          while wait() do
-         if not getgenv().autoOpen == true or iteration then break end
+         if not getgenv().autoOpen == true
                local args = {[1] = "StandardShop",[2] = 1}
                remotePath:InvokeServer(unpack(args))
          end
@@ -171,9 +171,6 @@ function getCurrentPlayerPOS()
      return false
 end
 
-local currnentPosition = getCurrentPlaterPOS()
-if currnentPosition then
-end
 
 
 
